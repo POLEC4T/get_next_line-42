@@ -6,7 +6,7 @@
 /*   By: mniemaz <mniemaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:47:35 by mniemaz           #+#    #+#             */
-/*   Updated: 2024/11/19 17:09:25 by mniemaz          ###   ########.fr       */
+/*   Updated: 2024/11/21 11:56:36 by mniemaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strndup(const char *s, size_t n)
 {
 	char	*copy;
 	size_t	len;
 
 	len = ft_strlen(s);
+	if (n > 0 && n < len)
+		len = n;
 	copy = malloc((len + 1) * sizeof(char));
 	if (!copy)
 		return (NULL);
@@ -35,19 +37,15 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strchr_idx(const char *s, int c)
 {
 	int	i;
 
-	if (!s)
-		return (NULL);
 	i = -1;
 	while (s[++i])
 		if (*(unsigned char *)(s + i) == (char)c)
-			break ;
-	if (*(unsigned char *)(s + i) == (char)c)
-		return ((char *)(s + i));
-	return (NULL);
+			return (i);
+	return (-1);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -59,9 +57,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	else if (!s1 && s2)
-		return (ft_strdup((const char *)s2));
+		return (ft_strndup((const char *)s2, -1));
 	if (s1 && !s2)
-		return (ft_strdup((const char *)s1));
+		return (ft_strndup((const char *)s1, -1));
 	i = -1;
 	res = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!res)
