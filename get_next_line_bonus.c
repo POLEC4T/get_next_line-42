@@ -6,7 +6,7 @@
 /*   By: mniemaz <mniemaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:06:28 by mniemaz           #+#    #+#             */
-/*   Updated: 2024/11/21 15:18:42 by mniemaz          ###   ########.fr       */
+/*   Updated: 2024/11/25 18:26:25 by mniemaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,12 @@ char	*read_file(char *str, char *buffer, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[1024][BUFFER_SIZE + 1];
+	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
 	char		*str;
 	char		*line;
 
+	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
+		return (NULL);
 	str = NULL;
 	if (buffer[fd][0] != '\0')
 	{
@@ -93,21 +95,4 @@ char	*get_next_line(int fd)
 	rm_line(buffer[fd]);
 	free(str);
 	return (line);
-}
-
-int	main(void)
-{
-	char	*line;
-	int		fd;
-
-	// fd = open("./only_nl.txt", O_RDONLY);
-	fd = open("./text.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	fd = open("./other_text.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	close(fd);
 }

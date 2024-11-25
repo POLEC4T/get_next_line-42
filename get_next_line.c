@@ -6,7 +6,7 @@
 /*   By: mniemaz <mniemaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:06:28 by mniemaz           #+#    #+#             */
-/*   Updated: 2024/11/21 15:03:46 by mniemaz          ###   ########.fr       */
+/*   Updated: 2024/11/25 18:26:37 by mniemaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ char	*get_next_line(int fd)
 	char		*str;
 	char		*line;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	str = NULL;
 	if (buffer[0] != '\0')
 	{
@@ -94,52 +96,3 @@ char	*get_next_line(int fd)
 	free(str);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	char *line;
-// 	int fd;
-// 	int i;
-
-// 	// fd = open("./only_nl.txt", O_RDONLY);
-// 	fd = open("./text.txt", O_RDONLY);
-// 	// fd = 1;
-// 	i = 0;
-// 	while (i < 100 && (line = get_next_line(fd)))
-// 	{
-// 		printf("%s", line);
-// 		free(line);
-// 		i++;
-// 	}
-// 	printf("\n%s\n", line);
-
-// 	fd = open("./other_text.txt", O_RDONLY);
-// 	// fd = 1;
-// 	i = 0;
-// 	while (i < 100 && (line = get_next_line(fd)))
-// 	{
-// 		printf("%s", line);
-// 		free(line);
-// 		i++;
-// 	}
-// 	printf("\n%s\n", line);
-// 	// close(fd);
-// }
-
-// int	main(void)
-// {
-// 	char *line;
-// 	int fd;
-
-// 	// fd = open("./only_nl.txt", O_RDONLY);
-// 	fd = open("./text.txt", O_RDONLY);
-// 	line = get_next_line(fd);
-// 	printf("\n%s\n", line);
-// 	free(line);
-
-// 	fd = open("./other_text.txt", O_RDONLY);
-// 	line = get_next_line(fd);
-// 	printf("\n%s\n", line);
-// 	free(line);
-// 	// close(fd);
-// }
