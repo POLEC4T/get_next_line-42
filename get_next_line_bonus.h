@@ -6,7 +6,7 @@
 /*   By: mniemaz <mniemaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:09:02 by mniemaz           #+#    #+#             */
-/*   Updated: 2024/12/05 10:40:13 by mniemaz          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:43:33 by mniemaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # ifndef FD_MAX
-#  define FD_MAX 400
+#  define FD_MAX 1000
 # endif
 
 # include <stdlib.h>
