@@ -6,7 +6,7 @@
 /*   By: mniemaz <mniemaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:09:02 by mniemaz           #+#    #+#             */
-/*   Updated: 2024/11/21 14:29:01 by mniemaz          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:38:14 by mniemaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strndup(const char *s, size_t n);
-char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t sz);
 int		ft_strchr_idx(const char *s, int c);
+
 #endif
