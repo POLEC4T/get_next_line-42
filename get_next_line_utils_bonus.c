@@ -6,7 +6,7 @@
 /*   By: mniemaz <mniemaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:47:35 by mniemaz           #+#    #+#             */
-/*   Updated: 2024/11/21 14:24:39 by mniemaz          ###   ########.fr       */
+/*   Updated: 2024/12/05 09:51:19 by mniemaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strndup(const char *s, size_t n)
 	size_t	len;
 
 	len = ft_strlen(s);
-	if (n > 0 && n < len)
+	if (n < len)
 		len = n;
 	copy = malloc((len + 1) * sizeof(char));
 	if (!copy)
@@ -57,9 +57,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	else if (!s1 && s2)
-		return (ft_strndup((const char *)s2, -1));
+		return (ft_strndup((const char *)s2, ft_strlen((const char *)s2)));
 	if (s1 && !s2)
-		return (ft_strndup((const char *)s1, -1));
+		return (ft_strndup((const char *)s1, ft_strlen((const char *)s1)));
 	i = -1;
 	res = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!res)

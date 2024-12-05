@@ -6,13 +6,11 @@
 /*   By: mniemaz <mniemaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:06:28 by mniemaz           #+#    #+#             */
-/*   Updated: 2024/11/25 18:26:25 by mniemaz          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:37:47 by mniemaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
+#include "get_next_line_bonus.h"
 
 char	*extract_line(char *buffer)
 {
@@ -53,7 +51,6 @@ char	*read_file(char *str, char *buffer, int fd)
 	ssize_t	bytes_read;
 	char	*new_str;
 
-	bytes_read = -1;
 	while (ft_strchr_idx(buffer, '\n') == -1)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
@@ -75,16 +72,16 @@ char	*read_file(char *str, char *buffer, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
+	static char	buffer[FD_MAX][BUFFER_SIZE + 1];
 	char		*str;
 	char		*line;
 
-	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= FD_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	str = NULL;
 	if (buffer[fd][0] != '\0')
 	{
-		str = ft_strndup(buffer[fd], -1);
+		str = ft_strndup(buffer[fd], ft_strlen(buffer[fd]));
 		if (!str)
 			return (NULL);
 	}

@@ -6,13 +6,11 @@
 /*   By: mniemaz <mniemaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:06:28 by mniemaz           #+#    #+#             */
-/*   Updated: 2024/11/25 18:26:37 by mniemaz          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:37:51 by mniemaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 char	*extract_line(char *buffer)
 {
@@ -84,7 +82,7 @@ char	*get_next_line(int fd)
 	str = NULL;
 	if (buffer[0] != '\0')
 	{
-		str = ft_strndup(buffer, -1);
+		str = ft_strndup(buffer, ft_strlen(buffer));
 		if (!str)
 			return (NULL);
 	}
